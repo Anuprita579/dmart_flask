@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, increaseQuantity, decreaseQuantity } from "../redux/cartSlice";
 import { RootState } from "../redux/store";
+import { Link } from "react-router-dom";
 
 interface ProductProps {
   id: string;
@@ -18,7 +19,9 @@ const ProductCard: React.FC<ProductProps> = ({ id, name, imageUrl, dmartPrice })
 
   return (
     <div className="border p-4 text-center">
+      <Link to={`/product/${id}`}>
       <img src={imageUrl} alt={name} className="w-40 h-40 mx-auto" />
+      </Link>
       <h3>{name}</h3>
       <p>₹{dmartPrice}</p>
 

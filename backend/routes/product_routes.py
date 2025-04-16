@@ -36,3 +36,11 @@ def get_categories():
 def get_products_by_category(category_name):
     products = ProductService.get_products_by_category(category_name)
     return jsonify(products), 200
+
+@product_bp.route("/<product_id>", methods=["GET"])
+def get_product_by_id(product_id):
+    product = ProductService.get_product_by_id(product_id)
+    if product:
+        return jsonify(product), 200
+    else:
+        return jsonify({"error": "Product not found"}), 404

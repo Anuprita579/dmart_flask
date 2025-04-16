@@ -46,3 +46,17 @@ class ProductService:
         except Exception as e:
             print(f"Error fetching products by category: {str(e)}")
             return []
+        
+    @staticmethod
+    def get_product_by_id(product_id):
+        try:
+            categories = list(mongo_connection.db.products.find({}, {"_id": 0}))
+            for category in categories:
+                for subcategory in category.get('subcategories', {}).values():
+                    for product in subcategory.get('products', []):
+                        if product.get('id') == product_id:
+                            return product
+            return None
+        except Exception as e:
+            print(f"Error fetching product by ID: {str(e)}")
+            return None

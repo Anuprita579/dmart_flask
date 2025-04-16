@@ -2,3 +2,6 @@ flask
 flask-cors
 flask-pymongo
 python-dotenv
+firebase-admin
+smtplib
+email-validator
