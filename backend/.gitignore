@@ -22,4 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-.en
+.env
+
+# .gitignore
+firebase_admin_key.json
